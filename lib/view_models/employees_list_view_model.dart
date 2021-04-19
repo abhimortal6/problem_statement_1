@@ -44,11 +44,6 @@ class EmployeesListViewModel extends ChangeNotifier {
       return;
     }
 
-    if (_temp.length < perPage) {
-      canLoadMore = false;
-      notifyListeners();
-    }
-
     employees.addAll(_remoteEmployees.getRange(page * perPage, perPage * (page + 1)));
     if (employees.length == _remoteEmployees.length) {
       notifyListeners();
