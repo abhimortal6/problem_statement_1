@@ -45,9 +45,10 @@ class EmployeesListViewModel extends ChangeNotifier {
     }
 
     employees.addAll(_remoteEmployees.getRange(page * perPage, perPage * (page + 1)));
-    if (employees.length == _remoteEmployees.length) {
+    if (employees.length % _remoteEmployees.length == 0) {
       notifyListeners();
       page = 0;
+      print("List length: ${employees.length}");
       return;
     }
     page++;
